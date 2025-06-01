@@ -7,15 +7,17 @@ use App\UrlValidator;
 use App\UrlRepository;
 use Slim\Flash\Messages;
 use Slim\Interfaces\RouteCollectorInterface;
+use Slim\Views\PhpRenderer;
 
-readonly class AddUrlsController
+class AddUrlsController
 {
     public function __construct(
         private Messages $flash,
         private UrlNormal $urlNormal,
         private UrlRepository $urlRepository,
-        private RouteCollectorInterface $routeCollector,
-        private UrlValidator $urlValidator
+        private UrlValidator $urlValidator,
+        private PhpRenderer $renderer,
+        private RouteCollectorInterface $routeCollector
     ) {
     }
 
@@ -27,9 +29,9 @@ readonly class AddUrlsController
             $url['name'] = $this->urlNormal->normal($url['name']);
 
             if (!$existingUrl = $this->urlRepository->findOneByName($url['name'])) {
-                $url['created_at'] =  $url['created_at'] = date('d.m.Y');
+                $url['created_at'] = date('Y-m-d H:i:s');
 
-                $id = $this->urlRepository->create($url);
+                $id = $this->urlRepository->add($url);
 
                 $this->flash->addMessage('success', 'Страница успешно добавлена');
             } else {
@@ -49,6 +51,6 @@ readonly class AddUrlsController
             'flashes' => $this->flash->getMessages(),
         ];
 
-        return $this->get('renderer')->render($response->withStatus(422), 'home.phtml', $params);
+        return $this->renderer->render($response->withStatus(422), 'home.phtml', $params);
     }
 }

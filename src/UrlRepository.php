@@ -62,6 +62,8 @@ class UrlRepository
         $stmt->bindValue(':id', $id);
         $stmt->execute();
 
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         return array_shift($result);
     }
 

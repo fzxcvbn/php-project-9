@@ -46,31 +46,31 @@
 
 <main class="flex-grow-1">
     <div class="container-lg mt-3 px-4 px-md-0">
-    <h1>Сайт: {{ url.name }}</h1>
+    <h1>Сайт: <?= htmlspecialchars($url['name'] ?? '') ?></h1>
         <div class="table-responsive">
             <table class="table table-bordered table-hover text-nowrap" data-test="url">
                 <tbody>
                 <tr>
                     <td>ID</td>
-                    <td>{{ url.id }}</td>
+                    <td><?= htmlspecialchars($url['id'] ?? '') ?></td>
                 </tr>
                 <tr>
                     <td>Имя</td>
-                    <td>{{ url.name }}</td>
+                    <td><?= htmlspecialchars($url['name'] ?? '') ?></td>
                 </tr>
                 <tr>
                     <td>Дата создания</td>
-                    <td>{{ url.created_at }}</td>
+                    <td><?= htmlspecialchars($url['created_at'] ?? '') ?></td>
                 </tr>
                 </tbody>
             </table>
         </div>
 
         <h2 class="mt-5 mb-3">Проверки</h2>
-        <form class="mb-3" method="post"></form>
+        <form class="mt-3" method="post"></form>
             <input type="submit" class="btn btn-primary" value="Запустить проверку">
         </form>
-        <table class="table table-bordered table-hover" data-test="checks">
+        <table class="table table-bordered table-hover mt-3" data-test="checks">
             <tbody>
             <tr>
                 <th>ID</th>
@@ -80,16 +80,16 @@
                 <th>description</th>
                 <th>Дата создания</th>
             </tr>
-            {% for check in checks %}
+            <?php foreach ($checks ?? [] as $check) : ?>
                 <tr>
-                    <td>{{ check.id }}</td>
-                    <td>{{ check.status_code }}</td>
-                    <td>{{ check.h1 }}</td>
-                    <td>{{ check.title }}</td>
-                    <td>{{ check.description }}</td>
-                    <td>{{ check.created_at }}</td>
+                    <td><?= htmlspecialchars($check['id'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($check['status_code'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($check['h1'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($check['title'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($check['description'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($check['created_at'] ?? '') ?></td>
                 </tr>
-            {% endfor %}
+            <?php endforeach ?>
             </tbody>
         </table>
     </div>

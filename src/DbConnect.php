@@ -2,6 +2,8 @@
 
 namespace App;
 
+use PDO;
+
 class DbConnect
 {
     private static ?self $conn = null;
@@ -10,18 +12,20 @@ class DbConnect
     {
     }
 
-    public function connect()
+    public function connect(): PDO
     {
         $databaseUrl = parse_url(getenv('DATABASE_URL') ? : '');
 
         $dsn = sprintf(
-            "postgresql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
+            "pgsql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
             $databaseUrl['host'],
-            $databaseUrl['port'],
+            5432,
             ltrim($databaseUrl['path'], '/'),
             $databaseUrl['user'],
             $databaseUrl['pass']
         );
+
+
 
         $pdo = new \PDO($dsn);
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);

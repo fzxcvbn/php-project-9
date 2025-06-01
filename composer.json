@@ -17,11 +17,14 @@
     },
     "autoload": {
         "files": [
-            "src/addUrlsController.php",
-            "src/urlNormal.php",
-            "src/urlRepository.php",
-            "src/urlValidator.php",
-            "src/dbConnect.php"
+            "src/AddUrlsController.php",
+            "src/UrlNormal.php",
+            "src/UrlRepository.php",
+            "src/UrlValidator.php",
+            "src/DbConnect.php",
+            "src/UrlCheckRepository.php",
+            "src/ShowUrlsController.php",
+            "src/UrlNotFoundException.php"
         ]
     }
 }
