@@ -13,18 +13,23 @@
         "vlucas/phpdotenv": "^5.6",
         "ext-pdo": "*",
         "symfony/console": "^7.2",
-        "slim/http": "^1.4"
+        "slim/http": "^1.4",
+        "guzzlehttp/guzzle": "^7.0",
+        "imangazaliev/didom": "^2.0"
     },
     "autoload": {
         "files": [
-            "src/AddUrlsController.php",
+            "src/AddUrls.php",
             "src/UrlNormal.php",
+            "src/UrlChecker.php",
             "src/UrlRepository.php",
             "src/UrlValidator.php",
             "src/DbConnect.php",
             "src/UrlCheckRepository.php",
-            "src/ShowUrlsController.php",
-            "src/UrlNotFoundException.php"
+            "src/ShowUrls.php",
+            "src/UrlNotFoundException.php",
+            "src/ListUrls.php",
+            "src/CheckUrls.php"
         ]
     }
 }

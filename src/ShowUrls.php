@@ -9,12 +9,12 @@ use Slim\Flash\Messages;
 use Slim\Views\PhpRenderer;
 use App\UrlNotFoundException;
 
-class ShowUrlsController
+class ShowUrls
 {
     public function __construct(
         private Messages $flash,
         private UrlRepository $urlRepository,
-        /*private UrlCheckRepository $urlCheckRepository,*/
+        private UrlCheckRepository $urlCheckRepository,
         private PhpRenderer $renderer
     ) {
     }
@@ -23,19 +23,18 @@ class ShowUrlsController
     {
         try {
             $url = $this->urlRepository->getOne($args['id']);
-            /*$checks = $this->urlCheckRepository->get((string) $url['id']);*/
+            $checks = $this->urlCheckRepository->get((string) $url['id']);
 
-            $data = [
+            $params = [
                 'url'     => $url,
-                /*'checks'  => $checks,*/
-                'flashes' => $this->flash->getMessages(),
+                'checks'  => $checks,
+                'flashes' => $this->flash->getMessages()
             ];
-            $templatePath = __DIR__ . '/../templates/show.phtml';
-            return $this->renderer->render($response, 'show.phtml', $data);
+            return $this->renderer->render($response, 'show.phtml', $params);
         } catch (UrlNotFoundException) {
             return $this->renderer->render($response->withStatus(404), '404.phtml');
-        } /*catch (Exception) {
+        } catch (Exception) {
             return $this->renderer->render($response->withStatus(500), '500.phtml');
-        }*/
+        }
     }
 }

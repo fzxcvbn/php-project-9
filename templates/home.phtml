@@ -12,7 +12,7 @@
 <header class="flex-shrink-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">Анализатор страниц</a>
+            <a class="navbar-brand" href="/">Анализатор страниц</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Главная</a>
+                        <a class="nav-link active" aria-current="page" href="/">Главная</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/urls">Сайты</a>
@@ -42,8 +42,11 @@
                 <form action="/urls" method="post" class="d-flex flex-wrap flex-sm-nowrap">
                     <div class="flex-grow-1">
                         <input type="text" name="url[name]" value=""
-                            class="form-control form-control-lg"
+                            class="form-control form-control-lg <?php echo !empty($errors['name']) ? 'is-invalid' : '' ?>"
                             placeholder="https://www.example.com">
+                            <?php if (!empty($errors['name'])): ?>
+                                <p class="invalid-feedback"><?= htmlspecialchars($errors['name'][0]) ?></p>
+                            <?php endif; ?>
                     </div>
 
                     <div class="col-lg-3 flex-grow-1">

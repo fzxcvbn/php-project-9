@@ -9,7 +9,7 @@ use Slim\Flash\Messages;
 use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Views\PhpRenderer;
 
-class AddUrlsController
+class AddUrls
 {
     public function __construct(
         private Messages $flash,
@@ -48,7 +48,7 @@ class AddUrlsController
         $params = [
             'url'     => $url,
             'errors'  => $this->urlValidator->getErrors(),
-            'flashes' => $this->flash->getMessages(),
+            'flashes' => $this->flash->getMessages()
         ];
 
         return $this->renderer->render($response->withStatus(422), 'home.phtml', $params);
