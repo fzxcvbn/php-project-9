@@ -7,12 +7,12 @@ use DiDom\Exceptions\InvalidSelectorException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
-readonly class UrlChecker
+class UrlChecker
 {
     public function __construct(private Client $httpClient, private Document $document)
     {
     }
-    
+
     public function check(string $url): array
     {
         $response = $this->httpClient->request('GET', $url, ['timeout' => 3]);

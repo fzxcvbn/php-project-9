@@ -37,8 +37,8 @@ class UrlRepository
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return array_shift($result);
-    }    
-    
+    }
+
     public function add(array $url): string
     {
         $sql = 'INSERT INTO urls (name, created_at) VALUES(:name, :created_at)';
@@ -76,5 +76,4 @@ class UrlRepository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 }

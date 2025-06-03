@@ -61,4 +61,4 @@ $app->get('/urls', ListUrls::class)->setName('urls');
 $app->get('/urls/{id}', ShowUrls::class)->setName('url');
 $app->post('/urls/{id}/checks', CheckUrls::class)->setName('checkUrl');
 
-$app->run(); 
+$app->run();
