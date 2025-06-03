@@ -4,6 +4,8 @@ namespace App;
 
 use Slim\Views\PhpRenderer;
 use PDO;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
 
 class ListUrls
 {
@@ -32,7 +34,7 @@ class ListUrls
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function __invoke($request, $response)
+    public function __invoke(ServerRequest $request, Response $response)
     {
         $params = [
             'urls' => $this->getAllDetail(),

@@ -8,6 +8,8 @@ use App\UrlRepository;
 use Slim\Flash\Messages;
 use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Views\PhpRenderer;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
 
 class AddUrls
 {
@@ -21,7 +23,7 @@ class AddUrls
     ) {
     }
 
-    public function __invoke($request, $response)
+    public function __invoke(ServerRequest $request, Response $response)
     {
         $url = $request->getParsedBodyParam('url');
 

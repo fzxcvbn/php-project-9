@@ -8,6 +8,8 @@ use Exception;
 use Slim\Flash\Messages;
 use Slim\Views\PhpRenderer;
 use App\UrlNotFoundException;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
 
 class ShowUrls
 {
@@ -19,7 +21,7 @@ class ShowUrls
     ) {
     }
 
-    public function __invoke($request, $response, array $args)
+    public function __invoke(ServerRequest $request, Response $response, array $args)
     {
         try {
             $url = $this->urlRepository->getOne($args['id']);

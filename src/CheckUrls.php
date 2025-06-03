@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Exception\UrlNotFoundException;
+use App\UrlNotFoundException;
 use App\UrlCheckRepository;
 use App\UrlRepository;
 use App\UrlChecker;
@@ -13,6 +13,8 @@ use GuzzleHttp\Exception\RequestException;
 use Slim\Flash\Messages;
 use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Views\PhpRenderer;
+use Slim\Http\Response;
+use Slim\Http\ServerRequest;
 
 class CheckUrls
 {
@@ -26,7 +28,7 @@ class CheckUrls
     ) {
     }
 
-    public function __invoke($request, $response, array $args)
+    public function __invoke(ServerRequest $request, Response $response, array $args)
     {
         try {
             $urlId = $args['id'];

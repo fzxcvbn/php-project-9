@@ -10,22 +10,6 @@ class UrlRepository
     {
     }
 
-    public function getEntities(): array
-    {
-        $urls = [];
-        $sql = "SELECT * FROM urls";
-        $stmt = $this->conn->query($sql);
-
-        while ($row = $stmt->fetch()) {
-            $url = Url::fromArray([$row['name'], $row['created_at']]);
-            $url->setId($row['id']);
-            $urls[] = $url;
-        }
-
-        return $urls;
-    }
-
-
     public function findOneByName(string $name): ?array
     {
         $sql = 'SELECT * FROM urls WHERE name = :name';
