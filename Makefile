@@ -5,6 +5,9 @@ start:
 lint:
 	composer exec --verbose phpcs -- --standard=PSR12 public src
 
+install:
+	composer install
+
 setup:
 	composer install
 
