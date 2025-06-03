@@ -12,6 +12,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --no-interaction --no-dev --optimize-autoloader
+RUN composer install
 
 CMD ["bash", "-c", "make start"]
