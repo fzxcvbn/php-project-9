@@ -2,7 +2,6 @@
 
 use Slim\Flash\Messages;
 use Slim\Views\PhpRenderer;
-use PDO;
 use App\DbConnect;
 use Slim\Factory\AppFactory;
 use App\ShowUrls;
@@ -23,7 +22,7 @@ return [
     'renderer' => function () {
         return new PhpRenderer(__DIR__ . '/../templates');
     },
-    PDO::class => function () {
+    \PDO::class => function () {
         return DbConnect::get()->connect();
     },
     ShowUrls::class => function ($container) {
@@ -37,7 +36,7 @@ return [
     ListUrls::class => function ($container) {
         return new ListUrls(
             $container->get('renderer'),
-            $container->get(PDO::class)
+            $container->get(\PDO::class)
         );
     },
     UrlChecker::class => function ($container) {
