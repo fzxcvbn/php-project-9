@@ -75,13 +75,15 @@
         </form>
         <table class="table table-bordered table-hover mt-3" data-test="checks">
             <tbody>
+            <tr>
                 <th>ID</th>
                 <th>Код ответа</th>
                 <th>h1</th>
                 <th>title</th>
                 <th>description</th>
                 <th>Дата создания</th>
-            <?php foreach ($checks ?? [] as $check) : ?>
+            </tr>
+            <?php foreach ($checks as $check) : ?>
                 <tr>
                     <td><?= htmlspecialchars($check['id'] ?? '') ?></td>
                     <td><?= htmlspecialchars($check['status_code'] ?? '') ?></td>
