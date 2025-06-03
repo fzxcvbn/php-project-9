@@ -31,18 +31,21 @@
         </div>
     </nav>
 </header>
+<?php if (!empty($flashes['success'])) : ?>
+    <?php foreach ($flashes['success'] as $message) : ?>
+        <div class="alert alert-success">
+            <?= $message ?>
+        </div>
+    <?php endforeach ?>
+<?php endif ?>
 
-<?php foreach ($flashes['success'] as $message) : ?>
-    <div class="alert alert-success">
-        <?= $message ?>
-    </div>
-<?php endforeach ?>
-
-<?php foreach ($flashes['error'] as $message) : ?>
-    <div class="alert alert-danger">
-        <?= $message ?>
-    </div>
-<?php endforeach ?>
+<?php if (!empty($flashes['error'])) : ?>
+    <?php foreach ($flashes['error'] as $message) : ?>
+        <div class="alert alert-danger">
+            <?= $message ?>
+        </div>
+    <?php endforeach ?>
+<?php endif ?>
 
 <main class="flex-grow-1">
     <div class="container-lg mt-3 px-4 px-md-0">
