@@ -7,7 +7,7 @@ use PDO;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 
-class ListUrls
+class ListUrlsHandler
 {
     public function __construct(private PhpRenderer $renderer, private PDO $pdoConnection)
     {

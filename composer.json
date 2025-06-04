@@ -19,17 +19,17 @@
     },
     "autoload": {
         "files": [
-            "src/AddUrls.php",
+            "src/AddUrlsHandler.php",
             "src/UrlNormal.php",
             "src/UrlChecker.php",
             "src/UrlRepository.php",
             "src/UrlValidator.php",
             "src/DbConnect.php",
             "src/UrlCheckRepository.php",
-            "src/ShowUrls.php",
+            "src/ShowUrlsHandler.php",
             "src/UrlNotFoundException.php",
-            "src/ListUrls.php",
-            "src/CheckUrls.php"
+            "src/ListUrlsHandler.php",
+            "src/CheckUrlsHandler.php"
         ]
     }
 }

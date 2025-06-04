@@ -4,12 +4,12 @@ use Slim\Flash\Messages;
 use Slim\Views\PhpRenderer;
 use App\DbConnect;
 use Slim\Factory\AppFactory;
-use App\ShowUrls;
+use App\ShowUrlsHandler;
 use App\UrlRepository;
 use App\UrlNormal;
 use App\UrlValidator;
 use Slim\Interfaces\RouteCollectorInterface;
-use App\ListUrls;
+use App\ListUrlsHandler;
 use GuzzleHttp\Client;
 use DiDom\Document;
 use App\UrlChecker;
@@ -25,16 +25,16 @@ return [
     \PDO::class => function () {
         return DbConnect::get()->connect();
     },
-    ShowUrls::class => function ($container) {
-        return new ShowUrls(
+    ShowUrlsHandler::class => function ($container) {
+        return new ShowUrlsHandler(
             $container->get('flash'),
             $container->get(UrlRepository::class),
             $container->get(UrlCheckRepository::class),
             $container->get('renderer')
         );
     },
-    ListUrls::class => function ($container) {
-        return new ListUrls(
+    ListUrlsHandler::class => function ($container) {
+        return new ListUrlsHandler(
             $container->get('renderer'),
             $container->get(\PDO::class)
         );

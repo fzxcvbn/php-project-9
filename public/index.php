@@ -8,12 +8,12 @@ use Slim\Middleware\MethodOverrideMiddleware;
 use App\UrlRepository;
 use App\UrlValidator;
 use App\UrlNormal;
-use App\AddUrls;
+use App\AddUrlsHandler;
 use DI\ContainerBuilder;
 use Slim\Interfaces\RouteCollectorInterface;
-use App\ShowUrls;
-use App\ListUrls;
-use App\CheckUrls;
+use App\ShowUrlsHandler;
+use App\ListUrlsHandler;
+use App\CheckUrlsHandler;
 use App\UrlCheckRepository;
 use App\UrlChecker;
 
@@ -31,8 +31,8 @@ $app->addErrorMiddleware(true, true, true);
 
 $container->set(RouteCollectorInterface::class, fn() => $app->getRouteCollector());
 
-$container->set(AddUrls::class, function ($container) {
-    return new AddUrls(
+$container->set(AddUrlsHandler::class, function ($container) {
+    return new AddUrlsHandler(
         $container->get('flash'),
         $container->get(UrlNormal::class),
         $container->get(UrlRepository::class),
@@ -42,8 +42,8 @@ $container->set(AddUrls::class, function ($container) {
     );
 });
 
-$container->set(CheckUrls::class, function ($container) {
-    return new CheckUrls(
+$container->set(CheckUrlsHandler::class, function ($container) {
+    return new CheckUrlsHandler(
         $container->get(RouteCollectorInterface::class),
         $container->get('renderer'),
         $container->get('flash'),
@@ -56,9 +56,9 @@ $container->set(CheckUrls::class, function ($container) {
 $app->get('/', function ($request, $response) {
     return $this->get('renderer')->render($response, 'home.phtml');
 })->setName('home');
-$app->post('/urls', AddUrls::class)->setName('addUrl');
-$app->get('/urls', ListUrls::class)->setName('urls');
-$app->get('/urls/{id}', ShowUrls::class)->setName('url');
-$app->post('/urls/{id}/checks', CheckUrls::class)->setName('checkUrl');
+$app->post('/urls', AddUrlsHandler::class)->setName('addUrl');
+$app->get('/urls', ListUrlsHandler::class)->setName('urls');
+$app->get('/urls/{id}', ShowUrlsHandler::class)->setName('url');
+$app->post('/urls/{id}/checks', CheckUrlsHandler::class)->setName('checkUrl');
 
 $app->run();

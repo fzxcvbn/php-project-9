@@ -16,7 +16,7 @@ use Slim\Views\PhpRenderer;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 
-class CheckUrls
+class CheckUrlsHandler
 {
     public function __construct(
         private RouteCollectorInterface $routeCollector,

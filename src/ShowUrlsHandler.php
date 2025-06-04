@@ -11,7 +11,7 @@ use App\UrlNotFoundException;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 
-class ShowUrls
+class ShowUrlsHandler
 {
     public function __construct(
         private Messages $flash,

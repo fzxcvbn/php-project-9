@@ -11,7 +11,7 @@ use Slim\Views\PhpRenderer;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 
-class AddUrls
+class AddUrlsHandler
 {
     public function __construct(
         private Messages $flash,
