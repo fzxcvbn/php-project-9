@@ -50,7 +50,7 @@ class CheckUrlsHandler
         } catch (UrlNotFoundException) {
             return $this->renderer->render($response->withStatus(404), '404.phtml');
         } catch (Exception $e) {
-            $this->flash->addMessageNow('error', $e->getMessage());
+            $this->flash->addMessageNow('error', 'Произошла ошибка');
             $params = ['flashes' => $this->flash->getMessages()];
 
             return $this->renderer->render($response->withStatus(500), '500.phtml', $params);

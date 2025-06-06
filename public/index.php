@@ -60,5 +60,6 @@ $app->post('/urls', AddUrlsHandler::class)->setName('addUrl');
 $app->get('/urls', ListUrlsHandler::class)->setName('urls');
 $app->get('/urls/{id}', ShowUrlsHandler::class)->setName('url');
 $app->post('/urls/{id}/checks', CheckUrlsHandler::class)->setName('checkUrl');
+$app->get('/urls/{id}/checks', CheckUrlsHandler::class)->setName('checkUrl');
 
 $app->run();
