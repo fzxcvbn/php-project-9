@@ -31,21 +31,6 @@
         </div>
     </nav>
 </header>
-<?php if (!empty($flashes['success'])) : ?>
-    <?php foreach ($flashes['success'] as $message) : ?>
-        <div class="alert alert-success">
-            <?= $message ?>
-        </div>
-    <?php endforeach ?>
-<?php endif ?>
-
-<?php if (!empty($flashes['error'])) : ?>
-    <?php foreach ($flashes['error'] as $message) : ?>
-        <div class="alert alert-danger">
-            <?= $message ?>
-        </div>
-    <?php endforeach ?>
-<?php endif ?>
 <main>
     <h1>Упс что-то пошло не так</h1>
     <h2>Ошибка 500</h2>
